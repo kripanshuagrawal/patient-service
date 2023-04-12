@@ -18,6 +18,7 @@ public class PatientService {
     public String savePatientDetails(Patient patient) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(patient.getName()).set(patient);
+        Integer abc = 1234;
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
@@ -27,6 +28,7 @@ public class PatientService {
         ApiFuture<DocumentSnapshot> future = documentReference.get();
         DocumentSnapshot document = future.get();
         Patient patient = null;
+        Integer abccc = 2222;
         if (document.exists()) {
             patient = document.toObject(Patient.class);
             return patient;
